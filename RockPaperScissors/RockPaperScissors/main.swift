@@ -4,4 +4,5 @@
 //  Copyright © yagom academy. All rights reserved.
 //
 
-MukJjiPpa(from: RockPaperScissors().start()).start()
+let RockPaperScissorsResult = RockPaperScissors().start()
+MukJjiPpa(from: RockPaperScissorsResult).start()

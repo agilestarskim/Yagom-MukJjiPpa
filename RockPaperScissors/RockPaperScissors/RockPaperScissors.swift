@@ -12,19 +12,19 @@ final class RockPaperScissors: HandShapeGamePreparation {
     func start() -> GameResult {
         while self.gameResult == .again {
             printMenu(text: "가위(1), 바위(2), 보(3)! <종료 : 0> :")
+            let menu = readLine()
             self.computer = generateComputerHandShape()
-            let menu = getMenuFromUser()
             self.gameResult = executeMenu(by: menu)
         }
         return self.gameResult
     }
     
-    private func executeMenu(by menuNumber: Int?) -> GameResult {
+    private func executeMenu(by menuNumber: String?) -> GameResult {
         switch menuNumber {
-        case 0:
+        case "0":
             print("게임 종료")
             return .end
-        case 1, 2, 3:
+        case "1", "2", "3":
             guard let user = convertHandShape(from: menuNumber) else { return .again }
             return judgeGame(user, with: self.computer)
         default:

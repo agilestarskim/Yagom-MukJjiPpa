@@ -23,18 +23,18 @@ final class MukJjiPpa: HandShapeGamePreparation {
     func start() {
         while gameResult != .end {
             printMenu(text: "[\(turn.rawValue) 턴] 묵(1), 찌(2), 빠(3)! <종료 : 0> :")
+            let menu = readLine()
             self.computer = generateComputerHandShape()
-            let menu = getMenuFromUser()
             executeMenu(by: menu)
         }
     }
     
-    private func executeMenu(by menuNumber: Int?) {
+    private func executeMenu(by menuNumber: String?) {
         switch menuNumber {
-        case 0:
+        case "0":
             print("게임 종료")
             self.gameResult = .end
-        case 1, 2, 3:
+        case "1", "2", "3":
             if let user = convertHandShape(from: menuNumber) {
                 self.gameResult = judgeGame(user, with: computer)
             }
